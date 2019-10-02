@@ -1,12 +1,12 @@
 pragma solidity >=0.4.21 <0.6.0;
 
 // TODO: define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
-import "./ERC721MintableComplete.sol";
+import "./AwesomeTitle.sol";
 
 
 
 // DONE define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
-contract SolnSquareVerifier is ERC721MintableComplete {
+contract SolnSquareVerifier is AwesomeTitle {
     // DONE: define a solutions struct that can hold an index & an address
     struct Solution {
         uint256 index;
@@ -38,6 +38,35 @@ contract SolnSquareVerifier is ERC721MintableComplete {
     // TODO: Create a function to mint new NFT only after the solution has been verified
 //  - make sure the solution is unique (has not been used before)
 //  - make sure you handle metadata as well as tokenSuplly
+
+
+//  using Counters for Counters.Counter;
+
+//   Counters.Counter private _tokenIds;
+//   string internal constant _baseTokenURI = "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/";
+
+//   constructor() ERC721Full("AwesomeTitle", "DEED") public {
+//   }
+
+//   // Creates a new title for an owner of a property.
+//   function mint(address to, uint256 tokenId, string memory tokenURI)
+//   public
+//   onlyOwner
+//   returns(bool)
+//   {
+//     _tokenIds.increment();
+//     uint256 newItemId = _tokenIds.current();
+//     string memory strTokenId = uint2str(newItemId);
+//     bool success = false;
+//     string memory tokenURI;
+
+//     _mint(to, newItemId);
+//     tokenURI = strConcat(_baseTokenURI, strTokenId);
+//     _setTokenURI(tokenId,tokenURI);
+//     success = true;
+
+//     return success;
+//   }
 
 }
 
