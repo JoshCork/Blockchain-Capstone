@@ -21,7 +21,6 @@ contract AwesomeTitle is Pausable, ERC721Full, ERC721Mintable, Ownable, usingOra
   returns(bool)
   {
     bool success = false;
-    string memory tokenURI;
 
     _mint(to, tokenId);
     _setTokenURI(tokenId,tokenURI);
