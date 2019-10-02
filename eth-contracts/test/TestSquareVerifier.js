@@ -13,6 +13,9 @@ describe('match erc721 spec', function () {
         this.contract = await Verifier.new();
     })
     it('should be able to verify proof', async function () {
+
+        console.log(`typeOf p: ${typeof p.a}`);
+        console.log(`typeOf i: ${typeof i}`);
         let actual = await this.contract.verifyTx.call(p.a, p.b, p.c,i);
 
         let expected = true;

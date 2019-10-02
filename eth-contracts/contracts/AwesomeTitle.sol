@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/ownership/Ownable.sol";
 import "@openzeppelin/contracts/lifecycle/Pausable.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721Mintable.sol";
 import "./Oraclize.sol";
-import "@openzeppelin/contracts/drafts/Counters.sol";
+
 
 contract AwesomeTitle is Pausable, ERC721Full, ERC721Mintable, Ownable, usingOraclize {
 
