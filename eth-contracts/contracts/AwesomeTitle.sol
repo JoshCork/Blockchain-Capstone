@@ -10,6 +10,7 @@ import "./Oraclize.sol";
 contract AwesomeTitle is Pausable, ERC721Full, ERC721Mintable, Ownable, usingOraclize {
 
   string internal constant _baseTokenURI = "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/";
+  event AwesomeTitleTest(string aString);
 
   constructor() ERC721Full("AwesomeTitle", "DEED") public {
   }
@@ -27,5 +28,9 @@ contract AwesomeTitle is Pausable, ERC721Full, ERC721Mintable, Ownable, usingOra
     success = true;
 
     return success;
+  }
+
+  function awesomeTitleTest() external {
+    emit AwesomeTitleTest("Awesome Title Test");
   }
 }

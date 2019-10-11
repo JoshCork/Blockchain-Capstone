@@ -8,14 +8,12 @@ var ni  = require(__dirname + '/../test/negativeProof.json').inputs;
 // Test verification with correct proof
 // - use the contents from proof.json generated from zokrates steps
 
-describe('match erc721 spec', function () {
+describe('Verify proof.json working', function () {
     beforeEach(async function() {
         this.contract = await Verifier.new();
     })
     it('should be able to verify proof', async function () {
 
-        console.log(`typeOf p: ${typeof p.a}`);
-        console.log(`typeOf i: ${typeof i}`);
         let actual = await this.contract.verifyTx.call(p.a, p.b, p.c,i);
 
         let expected = true;
