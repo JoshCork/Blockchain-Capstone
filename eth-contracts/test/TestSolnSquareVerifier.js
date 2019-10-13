@@ -2,7 +2,6 @@
 let SolnSquareVerifier = artifacts.require('SolnSquareVerifier');
 var p   = require(__dirname + '/../test/proof.json').proof;
 var i   = require(__dirname + '/../test/proof.json').inputs;
-var ni  = require(__dirname + '/../test/negativeProof.json').inputs;
 
 contract('TestSolnSquareVerifier', accounts => {
 
@@ -17,17 +16,13 @@ contract('TestSolnSquareVerifier', accounts => {
         // Test if a new solution can be added for contract - SolnSquareVerifier
         it('a new correct solution can be added', async function () {
 
-            try {
-                await this.contract.testFunction.call();
-            } catch(e) {
-                console.log(e);
-            }
+            // await this.contract.testFunction.call().then(console.log);
 
-            // let actual = await this.contract.addSolution.call(p.a, p.b, p.c,i,account_two); // token should now be minted
-            // console.log(`actual: ${JSON.stringify(actual)}`);
+            let actual = await this.contract.addSolution.call(p.a, p.b, p.c,i,account_two); // token should now be minted
+            console.log(`actual: ${JSON.stringify(actual)}`);
 
-            // let expected = true;
-            assert.equal(true, false, "Verifier failed.");
+            let expected = true;
+            assert.equal(actual, expected, "Verifier failed.");
         });
     });
 
@@ -35,4 +30,4 @@ contract('TestSolnSquareVerifier', accounts => {
 
 
 
-// Test if an ERC721 token can be minted for contract - SolnSquareVerifier
+// Test if an ERC721 token can be minted for contract - SolnSquareVerifier  /* Not needed this is wrapped up in the test above as my function add solution does both */

@@ -32,9 +32,16 @@ contract SolnSquareVerifier is AwesomeTitle, Verifier {
     event AddSolutionCalled(string theString);
     event TestingYo(string aString);
 
-    function testFunction() external {
+    constructor() AwesomeTitle() public {
+        emit TestingYo("Constructor for SolnSquareVerifier is Working");
+  }
+
+    function testFunction() external
+    returns(string memory)
+    {
         emit TestingYo("THIS IS A TEST YO!");
-        awesomeTitleTest();
+        string memory deepMessage = awesomeTitleTest();
+        return(deepMessage);
     }
 
     function solutionExists(bytes32 theHash, address theAddress)
@@ -57,11 +64,13 @@ contract SolnSquareVerifier is AwesomeTitle, Verifier {
     // DONE Create a function to add the solutions to the array and emit the event
     function addSolution(uint[2] calldata pa, uint[2][2] calldata pb, uint[2] calldata pc, uint[2] calldata i, address to)
     external
+    returns (bool)
     {
         emit AddSolutionCalled("I have been called");
         bytes32 newHash = keccak256(abi.encodePacked(pa, pb, pc, i));
         emit HashCreated(newHash);
         require(solutionExists(newHash, to) == false, "Solution has already been submitted by this address");
+        bool isMinted = false;
 
 
         // Solution doesn't already exist, add to solutions for this address
@@ -74,7 +83,8 @@ contract SolnSquareVerifier is AwesomeTitle, Verifier {
         bool solutionIsValid = verifyTx(pa,pb,pc,i);
         require(solutionIsValid == true, "This solution is not valid");
 
-        newTitle(to);
+        isMinted = newTitle(to);
+        return isMinted;
     }
 
     // DONE: Create a function to mint new NFT only after the solution has been verified
@@ -86,17 +96,17 @@ contract SolnSquareVerifier is AwesomeTitle, Verifier {
     internal
     returns(bool)
     {
-    _tokenIds.increment();
-    uint256 newItemId = _tokenIds.current();
-    string memory strTokenId = uint2str(newItemId);
-    bool success = false;
-    string memory tokenURI;
-    tokenURI = strConcat(_baseTokenURI, strTokenId);
+        _tokenIds.increment();
+        uint256 newItemId = _tokenIds.current();
+        string memory strTokenId = uint2str(newItemId);
+        bool success = false;
+        string memory tokenURI;
+        tokenURI = strConcat(_baseTokenURI, strTokenId);
 
-    bool isMinted = mint(to, newItemId, tokenURI);
+        bool isMinted = mint(to, newItemId, tokenURI);
 
-    success = isMinted;
+        success = isMinted;
 
-    return success;
+        return success;
     }
 }

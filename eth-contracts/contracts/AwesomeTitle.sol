@@ -11,8 +11,11 @@ contract AwesomeTitle is Pausable, ERC721Full, ERC721Mintable, Ownable, usingOra
 
   string internal constant _baseTokenURI = "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/";
   event AwesomeTitleTest(string aString);
+  event AwesomeTitleTest2(string aString);
+  event AwesomeTitleMint(bool isSuccessful);
 
   constructor() ERC721Full("AwesomeTitle", "DEED") public {
+        emit AwesomeTitleTest("Constructor for AwesomeTitle working");
   }
 
   // Creates a new title for an owner of a property.
@@ -27,10 +30,17 @@ contract AwesomeTitle is Pausable, ERC721Full, ERC721Mintable, Ownable, usingOra
     _setTokenURI(tokenId,tokenURI);
     success = true;
 
+    emit AwesomeTitleMint(success);
+    // require(true == false,"my require statement is working");
     return success;
   }
 
-  function awesomeTitleTest() external {
-    emit AwesomeTitleTest("Awesome Title Test");
+  function awesomeTitleTest()
+  public
+  returns(string memory)
+  {
+    emit AwesomeTitleTest2("Awesome Title Test");
+    return("AwesomeTitle Test Function was Called");
+
   }
 }
