@@ -3,8 +3,9 @@
 ## Project Setup
 
 1. Clone this project from Github
-1. Add a `.secret` file with your gnache mnemonic
 1. Install node modules: `npm install'
+1. Navigate to /eth-contracts
+1. Add a `.secret` file with your gnache mnemonic
 1. Compile the code: `truffle compile`
 1. Migrate the contracts `truffle migrate`
 
